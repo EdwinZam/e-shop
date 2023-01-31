@@ -1,9 +1,9 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import { lightTheme } from "../themes/light-theme";
-import { SWRConfig } from "swr";
-import { UiProvider, CartProvider } from "../context";
+import '../styles/globals.css'
+import type { AppProps } from 'next/app'
+import { ThemeProvider, CssBaseline } from '@mui/material'
+import { lightTheme } from '../themes/light-theme'
+import { SWRConfig } from 'swr'
+import { UiProvider, CartProvider } from '../context'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -23,7 +23,7 @@ function App({ Component, pageProps }: AppProps) {
         </UiProvider>
       </CartProvider>
     </SWRConfig>
-  );
+  )
 }
 
-export default App;
+export default App
