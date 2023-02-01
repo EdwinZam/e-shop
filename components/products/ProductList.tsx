@@ -1,23 +1,18 @@
-import { Grid } from '@mui/material';
-import React, { FC } from 'react';
-import { IProduct } from '../../interfaces';
-import { ProductCard } from './ProductCard';
+import { Grid } from '@mui/material'
+import React, { FC } from 'react'
+import { IProduct } from '../../interfaces'
+import { ProductCard } from './ProductCard'
 
 interface Props {
-    products: IProduct[];
+  products: IProduct[]
 }
 
-export const ProductList:FC<Props>= ({products}) => {
+export const ProductList: FC<Props> = ({ products }) => {
   return (
     <Grid container spacing={4}>
-        {
-            products.map(product =>(
-                <ProductCard 
-                    key={ product.slug}
-                    product={ product }
-                />    
-            ))    
-        }
+      {products.map((product) => (
+        <ProductCard key={product.slug} product={product} />
+      ))}
     </Grid>
   )
 }

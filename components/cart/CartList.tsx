@@ -6,13 +6,13 @@ import {
   Grid,
   Link,
   Typography,
-} from "@mui/material";
-import React, { FC, useContext } from "react";
-import NextLink from "next/link";
-import { initialData } from "../../database/products";
-import { ItemCounter } from "../ui";
-import { CartContext } from "../../context/cart/CartContext";
-import { ICartProduct } from "../../interfaces";
+} from '@mui/material'
+import React, { FC, useContext } from 'react'
+import NextLink from 'next/link'
+import { initialData } from '../../database/products'
+import { ItemCounter } from '../ui'
+import { CartContext } from '../../context/cart/CartContext'
+import { ICartProduct } from '../../interfaces'
 /* const productsInCart =[
     initialData.products[0],
     initialData.products[1],
@@ -20,19 +20,19 @@ import { ICartProduct } from "../../interfaces";
 ] */
 
 interface Props {
-  editable?: boolean;
+  editable?: boolean
 }
 export const CartList: FC<Props> = ({ editable = false }) => {
   const { cart, updateCartQuantity, removeCartProduct } =
-    useContext(CartContext);
+    useContext(CartContext)
 
   const onNewCartQuantityValue = (
     product: ICartProduct,
     newQuantityValue: number
   ) => {
-    product.quantity = newQuantityValue;
-    updateCartQuantity(product);
-  };
+    product.quantity = newQuantityValue
+    updateCartQuantity(product)
+  }
 
   return (
     <>
@@ -51,7 +51,7 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                   <CardMedia
                     image={`/products/${product.image}`}
                     component="img"
-                    sx={{ borderRadius: "5px" }}
+                    sx={{ borderRadius: '5px' }}
                   />
                 </CardActionArea>
               </Link>
@@ -69,13 +69,13 @@ export const CartList: FC<Props> = ({ editable = false }) => {
                   currentValue={product.quantity}
                   maxValue={10}
                   updatedQuantity={(value) => {
-                    onNewCartQuantityValue(product, value);
+                    onNewCartQuantityValue(product, value)
                   }}
                 />
               ) : (
                 <Typography variant="h5">
-                  {product.quantity}{" "}
-                  {product.quantity > 1 ? "productos" : "productos"}
+                  {product.quantity}{' '}
+                  {product.quantity > 1 ? 'productos' : 'productos'}
                 </Typography>
               )}
             </Box>
@@ -102,5 +102,5 @@ export const CartList: FC<Props> = ({ editable = false }) => {
         </Grid>
       ))}
     </>
-  );
-};
+  )
+}
