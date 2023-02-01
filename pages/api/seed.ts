@@ -12,14 +12,12 @@ export default async function handler(
 ) {
   /*   if (process.env.NODE_ENV === 'production') {
     return res.status(401).json({ message: 'No tiene acceso al servicio' })
+    El seed deberia de estar por fuera de la funcion 
   } */
 
   await db.connect()
-
   await Product.deleteMany()
   await Product.insertMany(seedDatabase.initialData.products)
-
   await db.disconnect()
-
   res.status(200).json({ message: 'Proceso realizado Correctamente' })
 }
