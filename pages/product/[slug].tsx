@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useRouter } from 'next/router'
-import React, { useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import { Box, Button, Chip, Grid, Typography } from '@mui/material'
 import { ShopLayout } from '../../components/layouts'
 import { ProductSlideshow, SizeSelector } from '../../components/products'
 import { ItemCounter } from '../../components/ui'
-import { initialData } from '../../database/products'
+import { initialData } from '../../database/seed-data'
 import { useProducts } from '../../hooks/useProducts'
 import { IProduct, ICartProduct, ISize } from '../../interfaces'
 import { NextPage } from 'next'

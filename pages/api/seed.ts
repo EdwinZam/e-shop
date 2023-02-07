@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { db, seedDatabase } from '../../database'
-import { Product } from '../../models'
+import { Product, User } from '../../models'
 
 type Data = {
   message: string
@@ -10,12 +10,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  /*   if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'production') {
     return res.status(401).json({ message: 'No tiene acceso al servicio' })
-    El seed deberia de estar por fuera de la funcion 
-  } */
+  }
 
   await db.connect()
+  //Insertar Usuarios
+  await User.deleteMany()
+  await User.insertMany(seedDatabase.initialData.users)
+  //Insertar productos
   await Product.deleteMany()
   await Product.insertMany(seedDatabase.initialData.products)
   await db.disconnect()

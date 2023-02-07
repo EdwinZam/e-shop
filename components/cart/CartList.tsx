@@ -7,9 +7,9 @@ import {
   Link,
   Typography,
 } from '@mui/material'
-import React, { FC, useContext } from 'react'
+import { FC, useContext } from 'react'
 import NextLink from 'next/link'
-import { initialData } from '../../database/products'
+import { initialData } from '../../database/seed-data'
 import { ItemCounter } from '../ui'
 import { CartContext } from '../../context/cart/CartContext'
 import { ICartProduct } from '../../interfaces'
