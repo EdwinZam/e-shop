@@ -44,7 +44,10 @@ const LoginPage = () => {
       setTimeout(() => setShowError(false), 3000)
       return
     }
-    router.replace('/')
+
+    /* Navegador de cuenta */
+    const destination = router.query.p?.toString() || '/'
+    router.replace(destination)
     /*     try {
       const { data } = await tesloApi.post('/user/login', { email, password })
       const { token, user } = data
@@ -112,7 +115,15 @@ const LoginPage = () => {
               </Button>
             </Grid>
             <Grid item xs={12} display="flex" justifyContent="end">
-              <NextLink href="/auth/register" passHref legacyBehavior>
+              <NextLink
+                href={
+                  router.query.p
+                    ? `/auth/register?p=${router.query.p}`
+                    : `/auth/register`
+                }
+                passHref
+                legacyBehavior
+              >
                 <Link underline="always">No tienes cuenta ?</Link>
               </NextLink>
             </Grid>
