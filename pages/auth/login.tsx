@@ -31,7 +31,7 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<FormData>()
 
-  console.log({ errors })
+  // console.log({ errors })
 
   const [showError, setShowError] = useState(false)
 
