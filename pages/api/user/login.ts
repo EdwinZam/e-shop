@@ -40,7 +40,7 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       .status(400)
       .json({ message: 'Correo o contraseña no valido - Email' })
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   if (!bcrypt.compareSync(password, user.password!)) {
     return res
       .status(400)

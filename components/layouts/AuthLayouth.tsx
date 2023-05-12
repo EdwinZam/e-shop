@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import Head from 'next/head'
-import React, { FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 interface Props {
   title: string

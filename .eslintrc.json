@@ -15,7 +15,8 @@
   },
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "react/prop-types": "ignore"
   },
   "settings": {
     "react": {

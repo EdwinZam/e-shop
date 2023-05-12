@@ -1,16 +1,20 @@
 import { Typography } from '@mui/material'
-import { Inter } from '@next/font/google'
+//import { Inter } from '@next/font/google'
 import { NextPage } from 'next'
 import { ShopLayout } from '../components/layouts'
 import { ProductList } from '../components/products'
-import { initialData } from '../database/seed-data'
-import { IProduct } from '../interfaces'
+//import { initialData } from '../database/seed-data'
+//import { IProduct } from '../interfaces'
 import { useProducts } from '../hooks'
 import { FullScreenLoading } from '../components/ui'
+//import { useSession } from 'next-auth/react'
 
-const inter = Inter({ subsets: ['latin'] })
+//const inter = Inter({ subsets: ['latin'] })
 
 const Home: NextPage = () => {
+  /*   const session = useSession()
+  console.log({ session }) */
+
   const { products, isLoading } = useProducts('/products')
 
   return (

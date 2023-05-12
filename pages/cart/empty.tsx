@@ -1,7 +1,6 @@
 import NextLink from 'next/link'
 import { RemoveShoppingCartOutlined } from '@mui/icons-material'
 import { Box, Link, Typography } from '@mui/material'
-import React from 'react'
 import { ShopLayout } from '../../components/layouts'
 
 const EmptyPage = () => {

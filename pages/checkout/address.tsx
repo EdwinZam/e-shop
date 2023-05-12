@@ -3,19 +3,16 @@ import {
   Button,
   FormControl,
   Grid,
-  InputLabel,
   MenuItem,
-  Select,
   TextField,
   Typography,
 } from '@mui/material'
-import { GetServerSideProps } from 'next'
 import { ShopLayout } from '../../components/layouts/ShopLayout'
-import { jwt, countries } from '../../utils'
+import { countries } from '../../utils'
 import { useForm } from 'react-hook-form'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { CartContext } from '../../context/cart/CartContext'
 
 type FormData = {
@@ -50,9 +47,24 @@ const AdressPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormData>({
-    defaultValues: getAddressFromCookies(),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      address: '',
+      address2: '',
+      zip: '',
+      city: '',
+      country: countries[0].code,
+      phone: '',
+    },
   })
+
+  useEffect(() => {
+    reset(getAddressFromCookies())
+  }, [reset])
+
   const onSubmitAddress = (data: FormData) => {
     // console.log({ data })
     updateAddress(data)

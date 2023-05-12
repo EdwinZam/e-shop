@@ -5,6 +5,7 @@ import { IUser } from '../../interfaces'
 import { AuthContext, authReducer } from './'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { useSession, signOut } from 'next-auth/react'
 
 export interface AuthState {
   isLoggedIn: boolean
@@ -22,10 +23,19 @@ const AUTH_INITIAL_STATE: AuthState = {
 
 export const AuthProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, AUTH_INITIAL_STATE)
+  const { data, status } = useSession()
   const router = useRouter()
+
   useEffect(() => {
+    if (status === 'authenticated') {
+      //console.log(data?.user)
+      dispatch({ type: 'Auth - Login', payload: data?.user as IUser })
+    }
+  }, [status, data])
+
+  /*   useEffect(() => {
     checkToken()
-  }, [])
+  }, []) */
 
   const checkToken = async () => {
     if (!Cookies.get('token')) {
@@ -89,7 +99,6 @@ export const AuthProvider: FC<Props> = ({ children }) => {
   }
 
   const logout = () => {
-    Cookies.remove('token')
     Cookies.remove('cart')
     Cookies.remove('firstName')
     Cookies.remove('lastName')
@@ -99,8 +108,10 @@ export const AuthProvider: FC<Props> = ({ children }) => {
     Cookies.remove('city')
     Cookies.remove('country')
     Cookies.remove('phone')
+    signOut()
     /* refresh de la app. se elimina todo */
-    router.reload()
+    //router.reload()
+    //Cookies.remove('token')
   }
 
   return (

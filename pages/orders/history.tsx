@@ -1,13 +1,7 @@
-import React from 'react'
 import NextLink from 'next/link'
 import { ShopLayout } from '../../components/layouts'
 import { Typography, Grid, Chip, Link } from '@mui/material'
-import {
-  DataGrid,
-  GridColDef,
-  GridRenderCellParams,
-  GridValueGetterParams,
-} from '@mui/x-data-grid'
+import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid'
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 100 },

@@ -16,6 +16,8 @@ import { validations } from '../../utils'
 import { tesloApi } from '../../api'
 import { useRouter } from 'next/router'
 import { AuthContext } from '../../context'
+import { getSession, signIn } from 'next-auth/react'
+import { GetServerSideProps } from 'next'
 
 type FormData = {
   name: string
@@ -46,8 +48,9 @@ const RegisterPage = () => {
       return
     }
     /* navegar a la pantalla que el usuario estaba */
-    const destination = router.query.p?.toString() || '/'
-    router.replace(destination)
+    await signIn('credentials', { email, password })
+    /* const destination = router.query.p?.toString() || '/'
+    router.replace(destination) */
 
     /*     try {
       const { data } = await tesloApi.post('/user/register', {
@@ -161,4 +164,23 @@ const RegisterPage = () => {
   )
 }
 
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  query,
+}) => {
+  const session = await getSession({ req })
+  const { p = '/' } = query
+  if (session) {
+    return {
+      redirect: {
+        destination: p.toString(),
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
+}
 export default RegisterPage

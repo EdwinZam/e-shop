@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@mui/material'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { CartContext } from '../../context/cart/CartContext'
 import { currency } from '../../utils'
 

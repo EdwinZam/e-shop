@@ -1,17 +1,14 @@
 /* eslint-disable react/prop-types */
 import { Typography, Box } from '@mui/material'
-import { Inter } from '@next/font/google'
+//import { Inter } from '@next/font/google'
 import { NextPage } from 'next'
 import { ShopLayout } from '../../components/layouts'
 import { ProductList } from '../../components/products'
-import { useProducts } from '../../hooks'
-import { FullScreenLoading } from '../../components/ui'
 import { GetServerSideProps } from 'next'
 import { dbProducts } from '../../database'
 import { IProduct } from '../../interfaces/products'
 
-const inter = Inter({ subsets: ['latin'] })
-
+//const inter = Inter({ subsets: ['latin'] })
 interface Props {
   products: IProduct[]
   foundProducts: boolean
